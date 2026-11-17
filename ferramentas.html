@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Um cantinho para conversar, anotar como você se sente e preparar um plano de cuidado."
+    />
+    <meta name="theme-color" content="#fffaf0" />
+    <title>Um cantinho de cuidado — Mental Life</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="features.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="index.html">Mental Life <span aria-hidden="true">✿</span></a>
+      <a class="header-link" href="index.html">voltar pro início ←</a>
+    </header>
+
+    <main class="features-page">
+      <section class="features-intro">
+        <p>um cantinho pra se ouvir</p>
+        <h1>Pequenos cuidados,<br />no seu tempo.</h1>
+        <p class="intro-copy">
+          Ideias simples para acolher o que você sente. Use só o que fizer sentido pra você.
+        </p>
+      </section>
+
+      <section class="tool-card" aria-labelledby="chat-title">
+        <div class="tool-heading">
+          <h2 id="chat-title">Um papo sem pressa</h2>
+          <p>Às vezes, começar colocando em palavras já ajuda.</p>
+        </div>
+        <p class="gentle-note">
+          Esta é uma demonstração com respostas prontas: não há IA conectada nem atendimento
+          24h nesta página. Não substitui apoio profissional. Evite compartilhar dados pessoais.(não Funciona porque não é uma IA de verdade)
+        </p>
+        <div class="chat-messages" id="chat-messages" role="log" aria-live="polite">
+          <div class="chat-message">
+            <p>Oi. O que tem ocupado seus pensamentos hoje?</p>
+          </div>
+        </div>
+        <div class="chat-shortcuts" aria-label="Sugestões para começar">
+          <button type="button" data-chat-prompt="Hoje estou me sentindo ansioso.">Tô ansioso</button>
+          <button type="button" data-chat-prompt="Hoje foi um dia difícil.">Foi um dia difícil</button>
+          <button type="button" data-chat-prompt="Só preciso colocar algumas coisas pra fora.">Só quero conversar</button>
+        </div>
+        <form class="chat-form" id="chat-form">
+          <label class="visually-hidden" for="chat-input">Escreva o que gostaria de compartilhar</label>
+          <textarea id="chat-input" maxlength="500" placeholder="Escreva só o que se sentir à vontade para dividir..."></textarea>
+          <button class="tool-button" type="submit">Enviar mensagem</button>
+        </form>
+        <p class="chat-status" id="chat-status" aria-live="polite"></p>
+      </section>
+
+      <section class="tool-card" aria-labelledby="journal-title">
+        <div class="tool-heading">
+          <h2 id="journal-title">Meu diário de emoções</h2>
+          <p>Sem nota, sem julgamento. Como foi seu dia?</p>
+        </div>
+        <p class="gentle-note">
+          Seus registros ficam neste navegador e não são enviados. Em um aparelho compartilhado,
+          outras pessoas podem acessá-los. Você pode apagar tudo quando quiser.
+        </p>
+        <form class="journal-form" id="journal-form">
+          <label for="journal-date">
+            Dia
+            <input id="journal-date" name="date" type="date" required />
+          </label>
+          <label for="journal-mood">
+            Hoje eu me senti...
+            <select id="journal-mood" name="mood" required>
+              <option value="🌤️ Leve">🌤️ Leve</option>
+              <option value="🙂 Bem">🙂 Bem</option>
+              <option value="😐 Mais ou menos">😐 Mais ou menos</option>
+              <option value="😟 Ansioso">😟 Ansioso</option>
+              <option value="🌧️ Triste">🌧️ Triste</option>
+              <option value="😴 Cansado">😴 Cansado</option>
+            </select>
+          </label>
+          <label for="journal-note">
+            Quer anotar algo sobre esse sentimento?
+            <textarea id="journal-note" name="note" maxlength="500" placeholder="Pode ser só uma palavra..."></textarea>
+          </label>
+          <button class="tool-button" type="submit">Guardar no meu dispositivo</button>
+        </form>
+        <div class="journal-summary" id="journal-summary" aria-live="polite"></div>
+        <ul class="journal-entries" id="journal-entries" aria-label="Registros recentes"></ul>
+        <div class="journal-actions">
+          <p class="journal-status" id="journal-status" aria-live="polite"></p>
+          <button class="tool-button secondary" id="journal-clear" type="button">Apagar meus registros</button>
+        </div>
+      </section>
+
+      <section class="tool-card" aria-labelledby="plan-title">
+        <div class="tool-heading">
+          <h2 id="plan-title">Meu plano pra dias difíceis</h2>
+          <p>Deixe alguns lembretes prontos para quando precisar de apoio.</p>
+        </div>
+        <p class="gentle-note">
+          Um plano não precisa resolver tudo. É só uma ajudinha para lembrar dos próximos passos
+          que você escolheu com calma.
+        </p>
+        <form class="plan-form" id="plan-form">
+          <label for="plan-contact">
+            Alguém de confiança
+            <input id="plan-contact" name="contact" maxlength="80" placeholder="Nome da pessoa" required />
+          </label>
+          <label for="plan-phone">
+            Telefone dessa pessoa
+            <input id="plan-phone" name="phone" type="tel" maxlength="30" placeholder="(00) 00000-0000" required />
+          </label>
+          <label for="plan-place">
+            Um lugar onde posso me sentir mais seguro(a)
+            <input id="plan-place" name="place" maxlength="120" placeholder="Ex.: sala de casa, perto de alguém" required />
+          </label>
+          <label for="plan-anchor">
+            Uma frase que eu gostaria de lembrar
+            <input id="plan-anchor" name="anchor" maxlength="160" placeholder="Ex.: eu posso pedir ajuda" required />
+          </label>
+          <button class="tool-button" type="submit">Montar meu plano</button>
+        </form>
+        <p class="gentle-note">
+          O plano fica salvo apenas neste navegador. Se puder, converse sobre ele com alguém em quem confia.
+        </p>
+        <div class="saved-plan" id="saved-plan" hidden aria-live="polite"></div>
+        <p class="plan-status" id="plan-status" aria-live="polite"></p>
+        <div class="breathing">
+          <div class="breath-orb" id="breath-orb" aria-hidden="true"></div>
+          <div class="breath-copy">
+            <p id="breath-status" aria-live="polite">Se for confortável, experimente soltar o ar devagar.</p>
+            <div class="breath-buttons">
+              <button class="tool-button" id="breath-start" type="button">Respirar comigo</button>
+              <button class="tool-button secondary" id="breath-stop" type="button">Parar</button>
+            </div>
+          </div>
+        </div>
+        <p class="plan-status">Se focar na respiração não for confortável, pare e tente perceber o que vê e ouve ao seu redor.</p>
+      </section>
+
+      <p class="crisis-note">
+        Se você estiver em perigo imediato, procure um serviço de emergência (SAMU 192).
+        Para conversar, o CVV atende pelo 188. Esta página não é um serviço de emergência.
+        <a href="https://cvv.org.br/" target="_blank" rel="noreferrer">Acesse o site do CVV ↗</a>
+      </p>
+    </main>
+
+    <footer>
+      <span>Com carinho, Mental Life <span aria-hidden="true">🌱</span></span>
+      <a href="index.html">voltar pro início ↑</a>
+    </footer>
+  </body>
+</html>
